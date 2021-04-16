@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model QuiltShop.Models.Instructor;
+
+<h4>Add a new Instructor</h4>
+@using (Html.BeginForm())
+{
+  @Html.Label("First Name:")
+  @Html.TextBoxFor(model => model.NameFirst)
+
+  @Html.Label("Last Name:")
+  @Html.TextBoxFor(model => model.NameLast)
+
+  <input type="submit" value="Add Instructor" />
+}
+
+<p>@Html.ActionLink("Back to List of Instructors", "Index")</p>

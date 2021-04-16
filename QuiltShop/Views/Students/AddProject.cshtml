@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model QuiltShop.Models.Student;
+
+<h2>Add a Project</h2>
+
+<h4>Sign this student up to learn a project: @Html.DisplayFor(model => model.NameFirst) @Html.DisplayFor(model => model.NameLast)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.StudentId)
+
+  @Html.Label("Select a Project")
+  @Html.DropDownList("ProjectId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to List of Students", "Index")</p>

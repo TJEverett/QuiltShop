@@ -1,0 +1,45 @@
+@{
+  Layout = "_Layout";
+}
+
+@model QuiltShop.Models.Project;
+
+<h2>Project Details:</h2>
+
+<h4>Name: @Html.DisplayFor(model => model.Name)</h4>
+
+@if(@Model.Instructors.Count == 0)
+{
+  <p>This Project does not currently have any Instructors</p>
+}
+else
+{
+  <h4>Instuctors:</h4>
+  <ul>
+    @foreach(var join in Model.Instructors)
+    {
+      <li>@join.Instructor.NameFirst @join.Instructor.NameLast</li>
+    }
+  </ul>
+}
+
+@if(@Model.Students.Count == 0)
+{
+  <p>This Project dos not currently have any Students</p>
+}
+else
+{
+  <h4>Students:</h4>
+  <ul>
+    @foreach(var join in Model.Students)
+    {
+      <li>@join.Student.NameFirst @join.Student.NameLast</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Edit Details", "Edit", new { id = Model.ProjectId })</p>
+<p>@Html.ActionLink("Remove Project", "Delete", new { id = Model.ProjectId })</p>
+<p>@Html.ActionLink("Back to List of Projects", "Index")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

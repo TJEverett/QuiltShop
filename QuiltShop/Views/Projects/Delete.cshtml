@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+@model QuiltShop.Models.Project;
+
+<h2>Are you sure you want to romove this project?</h2>
+
+<h4>Name: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+
+<p>@Html.ActionLink("Back to List of Projects", "Index")</p>

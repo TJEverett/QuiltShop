@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model QuiltShop.Models.Project;
+
+<h2>Edit Details</h2>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ProjectId)
+
+  @Html.Label("Project Name")
+  @Html.EditorFor(model => model.Name)
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to List of Projects", "Index")</p>

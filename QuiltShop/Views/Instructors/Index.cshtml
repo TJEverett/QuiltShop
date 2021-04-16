@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@using QuiltShop.Models;
+@model List<QuiltShop.Models.Instructor>;
+
+<h1>Instructors</h1>
+
+@if(@Model.Count == 0)
+{
+  <h3>No Instructors have been added yet!</h3>
+}
+
+@foreach (Instructor instructor in Model)
+{
+  <li>@Html.ActionLink($"{instructor.NameFirst} {instructor.NameLast}", "Details", new { id = instructor.InstructorId })</li>
+}
+
+<p>@Html.ActionLink("Add new Instructor", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

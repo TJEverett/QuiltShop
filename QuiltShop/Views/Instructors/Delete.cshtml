@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+@model QuiltShop.Models.Instructor;
+
+<h2>Are you sure you want to remove this instructor?</h2>
+
+<h4>Name: @Html.DisplayFor(model => model.NameFirst) @Html.DisplayFor(model => model.NameLast)</h4>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+
+<p>@Html.ActionLink("Back to List of Instructors", "Index")</p>

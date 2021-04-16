@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model QuiltShop.Models.Student;
+
+<h2>Edit Details</h2>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.StudentId)
+
+  @Html.Label("First Name")
+  @Html.EditorFor(model => model.NameFirst)
+
+  @Html.Label("Last Name")
+  @Html.EditorFor(model => model.NameLast)
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to List of Students", "Index")</p>

@@ -1,0 +1,36 @@
+@{
+  Layout = "_Layout";
+}
+
+@model QuiltShop.Models.Student;
+
+<h2>Student Details:</h2>
+
+<h4>Name: @Html.DisplayFor(model => model.NameFirst) @Html.DisplayFor(model => model.NameLast)</h4>
+
+@if(@Model.Projects.Count == 0)
+{
+  <p>This Student has not signed up for any Projects</p>
+}
+else
+{
+  <h4>Projects:</h4>
+  <ul>
+    @foreach (var join in Model.Projects)
+    {
+      <li>@Html.ActionLink(@join.Project.Name, "Details", "Projects", new { id = @join.Project.ProjectId })</li>
+      @using (Html.BeginForm("DeleteProject", "Students"))
+      {
+        @Html.Hidden("joinId", @join.ProjectStudentId)
+        <input type="submit" value="Delete" />
+      }
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Sign up for a Project", "AddProject", new { id = Model.StudentId })</p>
+<p>@Html.ActionLink("Edit Details", "Edit", new { id = Model.StudentId })</p>
+<p>@Html.ActionLink("Remove Student", "Delete", new { id = Model.StudentId })</p>
+<p>@Html.ActionLink("Back to List of Students", "Index")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

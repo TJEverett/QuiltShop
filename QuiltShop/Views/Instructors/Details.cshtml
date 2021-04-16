@@ -1,0 +1,36 @@
+@{
+  Layout = "_Layout";
+}
+
+@model QuiltShop.Models.Instructor;
+
+<h2>Instructor Details:</h2>
+
+<h4>Name: @Html.DisplayFor(model => model.NameFirst) @Html.DisplayFor(model => model.NameLast)</h4>
+
+@if(@Model.Projects.Count == 0)
+{
+  <p>This Instructor is not teaching any Projects</p>
+}
+else
+{
+  <h4>Projects:</h4>
+  <ul>
+    @foreach(var join in Model.Projects)
+    {
+      <li>@Html.ActionLink(@join.Project.Name, "Details", "Projects", new { id = @join.Project.ProjectId })</li>
+      @using (Html.BeginForm("DeleteProject", "Instructors"))
+      {
+        @Html.Hidden("joinId", @join.InstructorProjectId)
+        <input type="submit" value="Delete" />
+      }
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Teach a Project", "AddProject", new { id = Model.InstructorId })</p>
+<p>@Html.ActionLink("Edit Details", "Edit", new { id = Model.InstructorId })</p>
+<p>@Html.ActionLink("Remove Instructor", "Delete", new { id = Model.InstructorId })</p>
+<p>@Html.ActionLink("Back to List of Instructors", "Index")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
